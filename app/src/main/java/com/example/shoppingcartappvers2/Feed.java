@@ -17,7 +17,6 @@ public class Feed {
         this.like = like;
         this.comment = comment;
         this.share = share;
-//        git
     }
 
     public String getName() {
