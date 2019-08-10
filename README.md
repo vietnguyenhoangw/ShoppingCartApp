@@ -1,8 +1,7 @@
 # ShoppingCartApp
-# MODULE_2
-# EX
+MODULE_2 / EX
 
-RecycleView
-Toolbar
-Fragment
-NavigationDrawer
+- RecycleView
+- Toolbar
+- Fragment
+- NavigationDrawer
