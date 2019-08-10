@@ -53,9 +53,8 @@ public class FeedFragment extends Fragment {
         rvFeed = view.findViewById(R.id.rvFeed);
         feedArrayList = new ArrayList<>();
 
-//        feedAdapter.getFeedData();
-        feedArrayList.add(new Feed("Daniel","Share from instagram", R.drawable.coder,
-                R.drawable.hinh2, 30, 21, 6));
+        getFeedData();
+
 
         feedAdapter = new FeedAdapter(getContext(), feedArrayList,R.layout.item_feed);
 
@@ -65,4 +64,14 @@ public class FeedFragment extends Fragment {
         rvFeed.setLayoutManager(linearLayoutManager);
         rvFeed.setAdapter(feedAdapter);
     }
+
+    public void getFeedData() {
+        feedArrayList.add(new Feed("Daniel","Share from instagram", R.drawable.coder,
+                R.drawable.hinh2, 30, 21, 6));
+        feedArrayList.add(new Feed("JustinBieber","Posted", R.drawable.justin,
+                R.drawable.landmark, 7680, 398, 271));
+        feedArrayList.add(new Feed("Leonardo","Posted", R.drawable.leo,
+                R.drawable.leopic, 17680, 2980, 2171));
+    }
+
 }
