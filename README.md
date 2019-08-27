@@ -1,4 +1,4 @@
-# ShoppingCartApp
+# SocialNetworkCloneApp
 MODULE_2 / EX
 
 - RecycleView
