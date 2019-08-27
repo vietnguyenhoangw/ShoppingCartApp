@@ -34,12 +34,13 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/cart"
+                android:alpha="0.3"
+                android:id="@+id/reset"
                 android:layout_marginRight="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_cart" />
+                android:src="@drawable/ic_refresh_black_24dp" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>

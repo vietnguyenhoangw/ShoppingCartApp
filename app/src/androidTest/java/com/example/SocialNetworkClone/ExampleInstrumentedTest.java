@@ -1,4 +1,4 @@
-package com.example.shoppingcartappvers2;
+package com.example.SocialNetworkClone;
 
 import android.content.Context;
 

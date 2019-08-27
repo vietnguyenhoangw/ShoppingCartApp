@@ -1,4 +1,4 @@
-package com.example.shoppingcartappvers2;
+package com.example.SocialNetworkClone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.material.navigation.NavigationView;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    ImageView imageStart;
+    ImageView imageStart, imageRight;
     ImageView imageClose;
 
     NavigationView navigationView;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         imageStart = toolbar.findViewById(R.id.imgStart);
         toolBarTitle = toolbar.findViewById(R.id.toolbarTitle);
+        imageRight = toolbar.findViewById(R.id.reset);
+        imageRight.setVisibility(View.GONE);
+
 
         navigationView = findViewById(R.id.nav_view);
         headerView = navigationView.getHeaderView(0);
@@ -79,9 +83,16 @@ public class MainActivity extends AppCompatActivity {
             fragment = new FeedFragment();
             toolBarTitle.setText("Feed");
         }
-        else {
+        else if (id == R.id.menu_event) {
             fragment = new EventFragment();
             toolBarTitle.setText("Event");
+        }
+        else if (id == R.id.menu_setting) {
+            return;
+        }
+        else {
+            fragment = new FeedFragment();
+            return;
         }
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

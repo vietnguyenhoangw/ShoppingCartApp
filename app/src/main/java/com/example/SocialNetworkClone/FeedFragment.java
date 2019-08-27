@@ -1,20 +1,20 @@
-package com.example.shoppingcartappvers2;
+package com.example.SocialNetworkClone;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,10 +25,14 @@ import java.util.ArrayList;
  */
 public class FeedFragment extends Fragment {
 
+    private static final int FILTER_REQUEST_CODE = 1000;
     RecyclerView rvFeed;
     ArrayList<Feed> feedArrayList;
     FeedAdapter feedAdapter;
 
+    ImageView changeData;
+    TextView userChecked;
+    int itemCheck;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -63,15 +67,32 @@ public class FeedFragment extends Fragment {
 
         rvFeed.setLayoutManager(linearLayoutManager);
         rvFeed.setAdapter(feedAdapter);
+
+        changeData = view.findViewById(R.id.btnChangeData);
+        changeData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), UserSelectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        userChecked = view.findViewById(R.id.username);
+        userChecked.setText("123123123");
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void getFeedData() {
         feedArrayList.add(new Feed("Daniel","Share from instagram", R.drawable.coder,
-                R.drawable.hinh2, 30, 21, 6));
+            R.drawable.hinh2, 30, 21, 6));
         feedArrayList.add(new Feed("JustinBieber","Posted", R.drawable.justin,
-                R.drawable.landmark, 7680, 398, 271));
+            R.drawable.landmark, 7680, 398, 271));
         feedArrayList.add(new Feed("Leonardo","Posted", R.drawable.leo,
-                R.drawable.leopic, 17680, 2980, 2171));
+            R.drawable.leopic, 17680, 2980, 2171));
     }
-
 }

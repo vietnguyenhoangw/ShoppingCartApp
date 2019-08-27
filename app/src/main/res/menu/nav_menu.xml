@@ -10,4 +10,12 @@
         android:id="@+id/menu_event"
         android:icon="@drawable/ic_events_unselected"
         android:title="Event" />
+    <item
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Setting"/>
+    <item
+        android:id="@+id/menu_logout"
+        android:icon="@drawable/ic_keyboard_return_black_24dp"
+        android:title="Logout"/>
 </menu>
