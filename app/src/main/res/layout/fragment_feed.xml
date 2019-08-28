@@ -29,13 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="TextView" />
-
-        <Button
-            android:id="@+id/btnok"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="btnok" />
+            android:padding="5dp"
+            android:textColor="#FF0000"/>
 
         <ImageView
             android:id="@+id/btnChangeData"

@@ -33,10 +33,7 @@ public class FeedFragment extends Fragment {
     FeedAdapter feedAdapter;
 
     ImageView changeData;
-    TextView userChecked;
-    Button btnOk;
-
-    String value;
+    TextView username;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -83,16 +80,14 @@ public class FeedFragment extends Fragment {
             }
         });
 
+        username = view.findViewById(R.id.username);
 
-
-        btnOk = view.findViewById(R.id.btnok);
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String a = getArguments().getString("id123");
-                Toast.makeText(getContext(), "" + a, Toast.LENGTH_SHORT).show();
-            }
-        });
+        try {
+            String value = getArguments().getString("userNameSelect");
+            username.setText(value + " selected");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -32,7 +32,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:text="What's your User you want to check"
+                        android:text="What's your User you want to select"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 

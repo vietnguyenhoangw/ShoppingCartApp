@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -29,13 +30,16 @@ public class MainActivity extends AppCompatActivity {
     View headerView;
     TextView toolBarTitle;
 
-    String a;
+    String usernameBundle;
     Button btnok;
+
+    public static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        usernameBundle = getIntent().getStringExtra("id");
 
         drawerLayout = findViewById(R.id.drawerLayout1);
 
@@ -43,7 +47,13 @@ public class MainActivity extends AppCompatActivity {
         imageStart = toolbar.findViewById(R.id.imgStart);
         toolBarTitle = toolbar.findViewById(R.id.toolbarTitle);
         imageRight = toolbar.findViewById(R.id.reset);
-        imageRight.setVisibility(View.GONE);
+
+        imageRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reload(usernameBundle);
+            }
+        });
 
 
         navigationView = findViewById(R.id.nav_view);
@@ -76,23 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        a = getIntent().getStringExtra("id");
-
-        btnok = findViewById(R.id.btnOk);
-        btnok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,a + "", Toast.LENGTH_SHORT).show();
-
-                FeedFragment fragment = new FeedFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("id123", a);
-                fragment.setArguments(bundle);
-
-                getSupportFragmentManager();
-            }
-        });
     }
 
     public void displayFragment(int id) {
@@ -119,6 +112,17 @@ public class MainActivity extends AppCompatActivity {
 
         ft.addToBackStack(null);
 
+        ft.commit();
+    }
+
+    public void reload(String usernameBundle) {
+        FeedFragment fragment = new FeedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("userNameSelect", usernameBundle);
+        fragment.setArguments(bundle);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content, fragment);
         ft.commit();
     }
 }

@@ -52,7 +52,7 @@ public class UserSelectActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
         toolBarTitle = toolbar.findViewById(R.id.toolbarTitle);
-        toolBarTitle.setText("Change data");
+        toolBarTitle.setText("User Select");
         closeImage = toolbar.findViewById(R.id.imgStart);
         closeImage.setImageResource(R.drawable.ic_close_x);
         acceptImage = toolbar.findViewById(R.id.reset);
@@ -67,7 +67,7 @@ public class UserSelectActivity extends AppCompatActivity {
         builder.setTitle("Close");
         builder.setIcon(R.drawable.ic_close_x);
 
-        builder.setMessage("Do you want close Change data?");
+        builder.setMessage("Do you want close User Select?");
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -90,18 +90,16 @@ public class UserSelectActivity extends AppCompatActivity {
     /* getdata and passing to feedFragment */
     public void getDataChange() {
 
-
-
         int idItem = radioGroup_item.getCheckedRadioButtonId();
         switch (idItem) {
             case R.id.radioButton_item1:
-                itemcheck = "1";
+                itemcheck = "Daniel Nguyen";
                 break;
             case  R.id.radioButton_item2:
-                itemcheck = "2";
+                itemcheck = "Justin Bieber";
                 break;
             case R.id.radioButton_item3:
-                itemcheck = "3";
+                itemcheck = "Leonardo Dicaprio";
                 break;
         }
 
@@ -109,9 +107,18 @@ public class UserSelectActivity extends AppCompatActivity {
         Intent intent = new Intent(UserSelectActivity.this, MainActivity.class);
         Bundle bundle = new Bundle();
 
-        bundle.putString("id", "hello");
+        bundle.putString("id", itemcheck);
         intent.putExtras(bundle);
 
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(UserSelectActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
