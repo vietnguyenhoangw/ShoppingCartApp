@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,7 +34,9 @@ public class FeedFragment extends Fragment {
 
     ImageView changeData;
     TextView userChecked;
-    int itemCheck;
+    Button btnOk;
+
+    String value;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -47,6 +51,7 @@ public class FeedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_feed, container, false);
     }
 
@@ -74,12 +79,20 @@ public class FeedFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), UserSelectActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
-        userChecked = view.findViewById(R.id.username);
-        userChecked.setText("123123123");
 
+
+        btnOk = view.findViewById(R.id.btnok);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String a = getArguments().getString("id123");
+                Toast.makeText(getContext(), "" + a, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

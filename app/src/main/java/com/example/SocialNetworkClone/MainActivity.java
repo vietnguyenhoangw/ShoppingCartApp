@@ -7,14 +7,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     View headerView;
     TextView toolBarTitle;
+
+    String a;
+    Button btnok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,23 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
 
                 return false;
+            }
+        });
+
+        a = getIntent().getStringExtra("id");
+
+        btnok = findViewById(R.id.btnOk);
+        btnok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,a + "", Toast.LENGTH_SHORT).show();
+
+                FeedFragment fragment = new FeedFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("id123", a);
+                fragment.setArguments(bundle);
+
+                getSupportFragmentManager();
             }
         });
     }

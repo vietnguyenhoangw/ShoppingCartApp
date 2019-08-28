@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserSelectActivity extends AppCompatActivity {
 
@@ -19,9 +20,9 @@ public class UserSelectActivity extends AppCompatActivity {
     ImageView closeImage;
     ImageView acceptImage;
 
-    RadioGroup radioGroup_item, radioGroup_like, radioGroup_share, radioGroup_comment;
+    RadioGroup radioGroup_item;
 
-    int itemcheck;
+    String itemcheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,26 +90,29 @@ public class UserSelectActivity extends AppCompatActivity {
     /* getdata and passing to feedFragment */
     public void getDataChange() {
 
-        /* create bundle to put data and passing to feedfragment*/
-        Intent data = new Intent();
+
 
         int idItem = radioGroup_item.getCheckedRadioButtonId();
         switch (idItem) {
             case R.id.radioButton_item1:
-                itemcheck = 1;
+                itemcheck = "1";
                 break;
             case  R.id.radioButton_item2:
-                itemcheck = 2;
+                itemcheck = "2";
                 break;
             case R.id.radioButton_item3:
-                itemcheck = 3;
+                itemcheck = "3";
                 break;
         }
 
-        data.putExtra("id", itemcheck);
-        setResult(RESULT_OK, data);
-        finish();
+        /* create bundle to put data and passing to feedfragment*/
+        Intent intent = new Intent(UserSelectActivity.this, MainActivity.class);
+        Bundle bundle = new Bundle();
 
-        onBackPressed();
+        bundle.putString("id", "hello");
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+        finish();
     }
 }

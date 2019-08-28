@@ -31,6 +31,12 @@
             android:gravity="center"
             android:text="TextView" />
 
+        <Button
+            android:id="@+id/btnok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="btnok" />
+
         <ImageView
             android:id="@+id/btnChangeData"
             android:layout_width="match_parent"
