@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.menu_feed) {
             fragment = new FeedFragment();
-            toolBarTitle.setText("Feed");
+            toolBarTitle.setText("New Feed");
         }
         else if (id == R.id.menu_event) {
             fragment = new EventFragment();
