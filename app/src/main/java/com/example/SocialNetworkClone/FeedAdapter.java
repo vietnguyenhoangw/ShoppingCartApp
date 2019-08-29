@@ -72,4 +72,11 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             share = itemView.findViewById(R.id.tv_share);
         }
     }
+
+    /*
+    * *
+    * * RecycleView Adapter
+    * * mapping XML item file and Object class file
+    * *
+    * */
 }

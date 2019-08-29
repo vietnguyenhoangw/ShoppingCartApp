@@ -1,24 +1,17 @@
 package com.example.SocialNetworkClone;
 
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 
@@ -27,12 +20,11 @@ import java.util.ArrayList;
  */
 public class FeedFragment extends Fragment {
 
-    private static final int FILTER_REQUEST_CODE = 1000;
     RecyclerView rvFeed;
     ArrayList<Feed> feedArrayList;
     FeedAdapter feedAdapter;
 
-    ImageView changeData;
+    ImageView selectData;
     TextView username;
 
     public FeedFragment() {
@@ -56,6 +48,10 @@ public class FeedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        /*
+        * RecycleView configure
+        * */
         rvFeed = view.findViewById(R.id.rvFeed);
         feedArrayList = new ArrayList<>();
 
@@ -70,8 +66,9 @@ public class FeedFragment extends Fragment {
         rvFeed.setLayoutManager(linearLayoutManager);
         rvFeed.setAdapter(feedAdapter);
 
-        changeData = view.findViewById(R.id.btnChangeData);
-        changeData.setOnClickListener(new View.OnClickListener() {
+        /* select data click, up arrow in fragment display */
+        selectData = view.findViewById(R.id.btnSelectUser);
+        selectData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), UserSelectActivity.class);
@@ -80,6 +77,8 @@ public class FeedFragment extends Fragment {
             }
         });
 
+
+        /* set text when have data from MainActivity */
         username = view.findViewById(R.id.username);
 
         try {
@@ -95,6 +94,7 @@ public class FeedFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /* getdata for recycleview */
     public void getFeedData() {
         feedArrayList.add(new Feed("Daniel","Share from instagram", R.drawable.coder,
             R.drawable.hinh2, 30, 21, 6));

@@ -6,15 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Button;
 
 
 import com.google.android.material.navigation.NavigationView;
@@ -31,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
     TextView toolBarTitle;
 
     String usernameBundle;
-    Button btnok;
-
-    public static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerLayout1);
 
+        /*
+         * Toolbar custom
+         * */
         toolbar = findViewById(R.id.toolbar);
         imageStart = toolbar.findViewById(R.id.imgStart);
         toolBarTitle = toolbar.findViewById(R.id.toolbarTitle);
         imageRight = toolbar.findViewById(R.id.reset);
 
+        /* toolbar icon left*/
         imageRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,17 +53,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        navigationView = findViewById(R.id.nav_view);
-        headerView = navigationView.getHeaderView(0);
-        imageClose = headerView.findViewById(R.id.imgClose);
-
+        /* toolbar icon right*/
         imageStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+
+        /*
+         * NavigationView custom
+         * */
+        navigationView = findViewById(R.id.nav_view);
+        headerView = navigationView.getHeaderView(0);
+        imageClose = headerView.findViewById(R.id.imgClose);
 
         imageClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         displayFragment(R.id.menu_feed);
 
+        /* NavigationView select */
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /* Navigation Drawers's item select */
     public void displayFragment(int id) {
         Fragment fragment = null;
 
@@ -115,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
+    /* reload fragment */
     public void reload(String usernameBundle) {
         FeedFragment fragment = new FeedFragment();
         Bundle bundle = new Bundle();

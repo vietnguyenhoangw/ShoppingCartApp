@@ -27,6 +27,7 @@ public class UserSelectActivity extends AppCompatActivity {
 
         CreateWidget();
 
+        /* toolbar icon left */
         closeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +35,7 @@ public class UserSelectActivity extends AppCompatActivity {
             }
         });
 
+        /* toolbar icon right */
         acceptImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,12 +45,12 @@ public class UserSelectActivity extends AppCompatActivity {
 
     }
 
-    /* mapping and toolbar */
+    /* mapping and custom toolbar */
     public void CreateWidget() {
         toolbar = findViewById(R.id.toolbar);
 
         toolBarTitle = toolbar.findViewById(R.id.toolbarTitle);
-        toolBarTitle.setText("Change data");
+        toolBarTitle.setText("User Select");
         closeImage = toolbar.findViewById(R.id.imgStart);
         closeImage.setImageResource(R.drawable.ic_close_x);
         acceptImage = toolbar.findViewById(R.id.reset);
@@ -57,6 +59,7 @@ public class UserSelectActivity extends AppCompatActivity {
         radioGroup_item = findViewById(R.id.radioGroup);
     }
 
+    /* close alert dialog custom*/
     public void Close() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserSelectActivity.this);
 
@@ -99,7 +102,7 @@ public class UserSelectActivity extends AppCompatActivity {
                 break;
         }
 
-        /* create bundle to put data and passing to feedfragment*/
+        /* create bundle to put data and passing to MainActivity*/
         Intent intent = new Intent(UserSelectActivity.this, MainActivity.class);
         Bundle bundle = new Bundle();
 
@@ -110,6 +113,7 @@ public class UserSelectActivity extends AppCompatActivity {
         finish();
     }
 
+    /* custom back button */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
