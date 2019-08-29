@@ -16,7 +16,6 @@ public class UserSelectActivity extends AppCompatActivity {
     TextView toolBarTitle;
     ImageView closeImage;
     ImageView acceptImage;
-
     RadioGroup radioGroup_item;
 
     String itemcheck;
