@@ -52,7 +52,7 @@ public class UserSelectActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
         toolBarTitle = toolbar.findViewById(R.id.toolbarTitle);
-        toolBarTitle.setText("User Select");
+        toolBarTitle.setText("Change data");
         closeImage = toolbar.findViewById(R.id.imgStart);
         closeImage.setImageResource(R.drawable.ic_close_x);
         acceptImage = toolbar.findViewById(R.id.reset);
